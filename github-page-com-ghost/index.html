@@ -9,7 +9,7 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=39b0eecc91" />
+    <link rel="stylesheet" type="text/css" href="../assets/built/screen.css?v=c7bd4d3777" />
 
     <link rel="shortcut icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
@@ -170,12 +170,12 @@ instalada e o Yarn [https://yarnpkg.com/en/docs/install#alternatives-tab] ou NPM
 npm -v
 yarn -v</code></pre><!--kg-card-end: code--><p>Segundo passo é instalar o Ghost-CLI com o gerenciador de sua preferencia</p><!--kg-card-begin: code--><pre><code class="language-bash">npm install ghost-cli@latest -g</code></pre><!--kg-card-end: code--><p>Depois de instalado, verifique: </p><!--kg-card-begin: code--><pre><code class="language-bash">ghost -v</code></pre><!--kg-card-end: code--><p>Agora vamos criar um novo diretório para o projeto e instalar o Ghost nele:</p><!--kg-card-begin: code--><pre><code class="language-bash">mkdir my-ghost &amp;&amp; cd my-ghost
 ghost install local
-ghost start</code></pre><!--kg-card-end: code--><p>Já será possível acessar o painel de administração do seu site na seguinte url: <a href="../ghost">http://localhost:2368/ghost</a></p><p>Basicamente é isso para se iniciar. Para se aprofundar mais sobre o Ghost, recomendo a <a href="https://ghost.org/docs/setup/">documentação oficial</a>. Basicamente seguimos os passos de lá, é bem simples.</p><h2 id="parte-2-github-pages">Parte 2: Github Pages</h2><p>Agora é preciso criar um <a href="https://github.com/new">novo repositório</a> em seu Github seguindo este padrão de nome: <em><em>username</em></em>.github.io</p><p>Com este repositório criado, vamos clona-lo para dentro daquela pasta que instalamos o Ghost com o nome de static:</p><!--kg-card-begin: code--><pre><code class="language-bash"># dentro da pasta my-ghost
+ghost start</code></pre><!--kg-card-end: code--><p>Já será possível acessar o painel de administração do seu site na seguinte url: <a href="../ghost">https://leocarmo.github.io/ghost</a></p><p>Basicamente é isso para se iniciar. Para se aprofundar mais sobre o Ghost, recomendo a <a href="https://ghost.org/docs/setup/">documentação oficial</a>. Basicamente seguimos os passos de lá, é bem simples.</p><h2 id="parte-2-github-pages">Parte 2: Github Pages</h2><p>Agora é preciso criar um <a href="https://github.com/new">novo repositório</a> em seu Github seguindo este padrão de nome: <em><em>username</em></em>.github.io</p><p>Com este repositório criado, vamos clona-lo para dentro daquela pasta que instalamos o Ghost com o nome de static:</p><!--kg-card-begin: code--><pre><code class="language-bash"># dentro da pasta my-ghost
 git clone https://github.com/username/username.github.io static</code></pre><!--kg-card-end: code--><h2 id="parte-3-deploy">Parte 3: Deploy</h2><p>Com seu blog feito, é hora de publicar. Para isso vamos precisar de um gerador de site estático, vamos utilizar o <a href="https://github.com/axitkhurana/buster">Buster</a>.</p><p>Para instala-lo, precisamos do <a href="https://pip.pypa.io/en/latest/installing/">pip</a>, um gerenciador de pacotes do Python. Para verificar se ele está instalado, utilize:</p><!--kg-card-begin: code--><figure class="kg-card kg-code-card"><pre><code class="language-bash">pip --version</code></pre><figcaption>Caso ele não esteja instalado, acesse a referencia para a documentação e instale.</figcaption></figure><!--kg-card-end: code--><p>Instale o Buster via pip e verifique:</p><!--kg-card-begin: code--><pre><code class="language-bash">pip install buster
 buster --version</code></pre><!--kg-card-end: code--><p>Agora vamos configurar o Buster:</p><!--kg-card-begin: code--><figure class="kg-card kg-code-card"><pre><code>buster setup</code></pre><figcaption>Tenha em mãos o repositório que criamos: <a href="https://github.com/username/username.github.io">https://github.com/username/username.github.io</a></figcaption></figure><!--kg-card-end: code--><p>Para facilitar, criei um arquivo para agilizar o processo de deploy, por mais que seja bem simples. Para fazer isso, crie um arquivo com <code>touch deploy.sh</code>  e jogue este conteúdo dentro</p><!--kg-card-begin: code--><pre><code class="language-bash">#!/bin/bash
 
 buster generate
-find static -name '*.html' -type f -exec sed -i '' 's#http://localhost:2368#https://username.github.io#g' {} \;
+find static -name '*.html' -type f -exec sed -i '' 's#https://leocarmo.github.io#https://username.github.io#g' {} \;
 buster deploy</code></pre><!--kg-card-end: code--><p>Agora basta executa-lo com <code>./deploy.sh</code>, a mensagem de sucesso será: Good job! Deployed to GitHub Pages.</p><p>Para visualizar se o deploy foi realizado com sucesso, acesse a aba de deployments no seu projeto: <a href="https://github.com/username/username.github.io/deployments">https://github.com/username/username.github.io/deployments</a>. </p><p>Seu site ficará disponível em: <a href="https://username.github.io">https://username.github.io</a></p><p>Todos os arquivos dentro da pasta <code>static</code> serão enviados diretamente para seu repositório e processados pelo GitHub.</p><p>Dica 1: aguarde alguns minutos, na primeira publicação pode ser que o Github não tenha processado seu site ainda.</p><blockquote>Dica 2: realize o backup do diretório onde instalamos o Ghost, o banco de dados do seu blog e todos os arquivos necessário para gerar o site estático ficam ali. Sem eles, tudo será perdido, então não esqueça de armazenar de forma segura.</blockquote><p>É isso, qualquer duvida entre em contato! </p>
                 </div>
             </section>
@@ -317,9 +317,9 @@ buster deploy</code></pre><!--kg-card-end: code--><p>Agora basta executa-lo com 
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=39b0eecc91"></script>
+    <script type="text/javascript" src="../assets/built/jquery.fitvids.js?v=c7bd4d3777"></script>
 
-    <script src="../assets/built/infinitescroll.js?v=39b0eecc91"></script>
+    <script src="../assets/built/infinitescroll.js?v=c7bd4d3777"></script>
 
     <script>
 

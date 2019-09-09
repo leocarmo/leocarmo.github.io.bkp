@@ -1,0 +1,7 @@
+.DS_Store
+/.scannerwork
+/.ci
+/vendor
+/.idea
+/node_modules
+ghost
